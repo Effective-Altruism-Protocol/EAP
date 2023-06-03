@@ -155,7 +155,7 @@ const checkIfAccountChanged = async () => {
           <div className="card flex flex-wrap justify-content-center gap-3">
             {foundations.map((foundation, index) => (
               index ?
-              <Link href={`/contribute/${index}`}>
+              <Link key={index} href={`/contribute/${index}`}>
                 <Button label={foundation.name} key={index}/>
               </Link>
               :
