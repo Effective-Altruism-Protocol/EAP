@@ -7,6 +7,7 @@ import { EAP_ABI, EAP_CONTRACT_ADDRESS } from "../../constants";
 
 import { Button } from 'primereact/button';
 
+import Table from '../../components/Table';
 
 
 
@@ -28,7 +29,7 @@ export default function Home() {
 
   
 
-const checkIfAccountChanged = async () => {
+/* const checkIfAccountChanged = async () => {
         try {
           const {ethereum} = window;
           ethereum.on('accountsChanged', (accounts) => {
@@ -44,7 +45,7 @@ const checkIfAccountChanged = async () => {
 
   useEffect(() => {
     checkIfAccountChanged();
-  }, []);
+  }, []); */
 
   /**
    * Returns a Provider or Signer object representing the Ethereum RPC with or without the
@@ -173,14 +174,16 @@ const checkIfAccountChanged = async () => {
         )}
       </div>
       <div className="flex flex-column align-items-center">
-        <div className=" w-5">
+        
           
 
           <h1 className="">Select a Foundation to Contribute</h1>
           
           {renderFoundations()}
-          
-        </div>
+          <Table
+            foundations = {foundations}
+          />
+        
       </div>
     </div>
   );
