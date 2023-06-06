@@ -133,8 +133,8 @@ const Table = (props) => {
         return (
             <React.Fragment>
                 {console.log(rowData)}
-                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${rowData.name}`} width={30} />
-                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{rowData.name}</span>
+                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${rowData.countryCodeiso2}`} width={30} />
+                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{rowData.countryCodeiso2}</span>
             </React.Fragment>
         );
     };

@@ -29,7 +29,7 @@ module.exports = {
 */
 module.exports = {
   solidity: "0.8.9",
-  defaultNetwork: "goerli",
+  defaultNetwork: "mumbai",
   networks: {
     goerli: {
       url: process.env.QUICKNODE_GOERLI_HTTP_URL,

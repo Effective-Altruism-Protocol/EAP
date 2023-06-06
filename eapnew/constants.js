@@ -1,4 +1,4 @@
-export const EAP_CONTRACT_ADDRESS = "0xB2911A32bf795D8F1DCE950A4F6a9549a2d03aBc"; //mumbai
+export const EAP_CONTRACT_ADDRESS = "0xdF984fe16F0A4900Effd296BC2FBACd20682C5Dc"; //mumbai
 export const CONVERT_TOKENS_CONTRACT_ADDRESS = "";
 
 export const EAP_ABI = [
@@ -96,6 +96,11 @@ export const EAP_ABI = [
             "internalType": "uint8",
             "name": "changedName",
             "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "indexed": false,
@@ -170,6 +175,26 @@ export const EAP_ABI = [
         "internalType": "string",
         "name": "_description",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_webUrl",
+        "type": "string"
+      },
+      {
+        "internalType": "enum EAP.countriesCodeiso2",
+        "name": "_country",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_tags",
+        "type": "string[]"
       }
     ],
     "name": "addFoundation",
@@ -195,6 +220,36 @@ export const EAP_ABI = [
             "internalType": "string",
             "name": "description",
             "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "webUrl",
+            "type": "string"
+          },
+          {
+            "internalType": "enum EAP.countriesCodeiso2",
+            "name": "country",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "collected",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string[]",
+            "name": "tags",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Foundation",
@@ -370,6 +425,31 @@ export const EAP_ABI = [
         "internalType": "string",
         "name": "description",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "webUrl",
+        "type": "string"
+      },
+      {
+        "internalType": "enum EAP.countriesCodeiso2",
+        "name": "country",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "collected",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "createdAt",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -400,6 +480,36 @@ export const EAP_ABI = [
             "internalType": "string",
             "name": "description",
             "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "webUrl",
+            "type": "string"
+          },
+          {
+            "internalType": "enum EAP.countriesCodeiso2",
+            "name": "country",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "collected",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string[]",
+            "name": "tags",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Foundation[]",
@@ -454,6 +564,36 @@ export const EAP_ABI = [
             "internalType": "string",
             "name": "description",
             "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "webUrl",
+            "type": "string"
+          },
+          {
+            "internalType": "enum EAP.countriesCodeiso2",
+            "name": "country",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "collected",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string[]",
+            "name": "tags",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Foundation",
@@ -495,6 +635,36 @@ export const EAP_ABI = [
             "internalType": "string",
             "name": "description",
             "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "webUrl",
+            "type": "string"
+          },
+          {
+            "internalType": "enum EAP.countriesCodeiso2",
+            "name": "country",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "collected",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string[]",
+            "name": "tags",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Foundation",
@@ -569,6 +739,11 @@ export const EAP_ABI = [
             "internalType": "uint8",
             "name": "changedName",
             "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Project[]",
@@ -630,6 +805,11 @@ export const EAP_ABI = [
             "internalType": "uint8",
             "name": "changedName",
             "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
           }
         ],
         "internalType": "struct EAP.Project[]",
@@ -721,6 +901,11 @@ export const EAP_ABI = [
         "internalType": "uint8",
         "name": "changedName",
         "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "createdAt",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -804,6 +989,11 @@ export const EAP_ABI = [
         "internalType": "uint8",
         "name": "changedName",
         "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "createdAt",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
