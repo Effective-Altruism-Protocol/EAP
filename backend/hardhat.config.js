@@ -35,7 +35,7 @@ module.exports = {
       url: process.env.QUICKNODE_GOERLI_HTTP_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
-    goerli: {
+    mumbai: {
       url: process.env.QUICKNODE_MUMBAI_HTTP_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
