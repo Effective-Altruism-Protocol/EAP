@@ -15,7 +15,7 @@ contract EAP is Ownable, ConvertTokens {
     /// @dev Balance of contract
     uint256 balance = 0;
     /// @dev
-    enum countries {Venezuela, USA} 
+    enum countries {AFG,ALB,DEU,AND,AGO,AIA,ATA,ATG,SAU,DZA,ARG,ARM,ABW,AUS,AUT,AZE,BEL,BHS,BHR,BGD,BRB,BLZ,BEN,BTN,BLR,MMR,BOL,BIH,BWA,BRA,BRN,BGR,BFA,BDI,CPV,KHM,CMR,CAN,TCD,CHL,CHN,CYP,VAT,COL,COM,COG,COD,PRK,KOR,CIV,CRI,HRV,CUB,CWU,DNK,DMA,ECU,EGY,SLV,ARE,ERI,SVK,SVN,ESP,USA,EST,ETH,PHL,FIN,FJI,FRA,GAB,GMB,GEO,GHA,GIB,GRD,GRC,GRL,GLP,GUM,GTM,GUF,GGY,GIN,GNQ,GNB,GUY,HTI,HND,HKG,HUN,IND,IDN,IRN,IRQ,IRL,BVT,IMN,CXR,NFK,ISL,BMU,CYM,CCK,COK,ALA,FRO,SGS,HMD,MDV,FLK,MNP,MHL,PCN,SLB,TCA,UMI,VGB,VIR,ISR,ITA,JAM,JPN,JEY,JOR,KAZ,KEN,KGZ,KIR,KWT,LBN,LAO,LSO,LVA,LBR,LBY,LIE,LTU,LUX,MEX,MCO,MAC,MKD,MDG,MYS,MWI,MLI,MLT,MAR,MTQ,MUS,MRT,MYT,FSM,MDA,MNG,MNE,MSR,MOZ,NAM,NRU,NPL,NIC,NER,NGA,NIU,NOR,NCL,NZL,OMN,NLD,PAK,PLW,PSE,PAN,PNG,PRY,PER,PYF,POL,PRT,PRI,QAT,GBR,CAF,CZE,DOM,SSD,REU,RWA,ROU,RUS,ESH,WSM,ASM,BLM,KNA,SMR,MAF,SPM,VCT,SHN,LCA,STP,SEN,SRB,SYC,SLE,SGP,SMX,SYR,SOM,LKA,ZAF,SDN,SWE,CHE,SUR,SJM,SWZ,TJK,THA,TWN,TZA,IOT,ATF,TLS,TGO,TKL,TON,TTO,TUN,TKM,TUR,TUV,UKR,UGA,URY,UZB,VUT,VEN,VNM,WLF,YEM,DJI,ZMB,ZWE} 
     /// @dev
     enum statusProject {published, closed, withdrawn, paused, refunded}
 
@@ -32,8 +32,11 @@ contract EAP is Ownable, ConvertTokens {
         string name;
         address account;
         string description;
-        //string email;
-        //countries country;
+        string email;
+        string webUrl;
+        countries country;
+        uint256 collected;
+        string[] tags;
     }
 
     /// @dev Donors
@@ -109,7 +112,7 @@ contract EAP is Ownable, ConvertTokens {
 
     /// @notice Constructor is needed only to make Payable
     constructor() payable ConvertTokens(0x98E5d0bd9c12dc9F846610092348619539331247){
-        foundations.push(Foundation(0, "", address(0), ""));
+        foundations.push(Foundation(0, "", address(0), "", "", "", countries.VEN, 0, new string[](0)));
         addressFoundationsById[foundationId] = address(0);
         idFoundationByAccount[address(0)] = foundationId;
         foundationId++;
@@ -117,16 +120,32 @@ contract EAP is Ownable, ConvertTokens {
         
         /// @dev Add new foundation only if address has no one. 
         /// @param _name The Foundation's name.
+        /// @param _description The Foundation's description.
+        /// @param _email The Foundation's email.
+        /// @param _webUrl The Foundation's web url.
         function addFoundation(
             string memory _name,
-            string memory _description
+            string memory _description,
+            string memory _email,
+            string memory _webUrl,
+            countries _country,
+            string[] memory _tags
              ) public 
              addressUsed(msg.sender)
              requireName(_name) 
              returns (Foundation memory) {
                 idFoundationByAccount[msg.sender] = foundationId;
                 addressFoundationsById[foundationId] = msg.sender;
-                foundations.push(Foundation(foundationId, _name, msg.sender, _description));
+                foundations.push(Foundation(
+                                    foundationId,
+                                    _name,
+                                    msg.sender,
+                                    _description,
+                                    _email,
+                                    _webUrl,
+                                    _country,
+                                    0, 
+                                    _tags));
                 foundationId++;
                 return foundations[uint256(foundationId-1)];
         }
@@ -213,6 +232,7 @@ contract EAP is Ownable, ConvertTokens {
                 addDonor(msg.sender, msg.value);
             } 
             addProjectToDonor(msg.sender, project.id);
+            foundations[uint(_foundationId)].collected += msg.value;
             //donor.balance += _amount;
             balance += msg.value;
         /// @dev verify is the goal is completed

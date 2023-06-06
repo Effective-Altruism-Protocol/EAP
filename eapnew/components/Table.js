@@ -28,7 +28,7 @@ const Table = (props) => {
     const [expandedRows, setExpandedRows] = useState(null);
     const [allExpanded, setAllExpanded] = useState(false);
 
-    const {fundations} = props;
+    const {foundations} = props;
 
     const representatives = [
         { name: 'Amy Elsner', image: 'amyelsner.png' },
@@ -132,8 +132,9 @@ const Table = (props) => {
     const countryBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${rowData.country.code}`} width={30} />
-                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{rowData.country.name}</span>
+                {console.log(rowData)}
+                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${rowData.name}`} width={30} />
+                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{rowData.name}</span>
             </React.Fragment>
         );
     };
@@ -338,7 +339,7 @@ const Table = (props) => {
                 <div className="card">
                     <h5>Filter Menu</h5>
                     <DataTable
-                        value={customers1}
+                        value={foundations}
                         paginator
                         className="p-datatable-gridlines"
                         showGridlines
@@ -353,7 +354,7 @@ const Table = (props) => {
                     >
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
                         <Column header="Country" filterField="country.name" style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
-                        <Column
+                        {/* <Column
                             header="Agent"
                             filterField="representative"
                             showFilterMatchModes={false}
@@ -368,7 +369,7 @@ const Table = (props) => {
                         <Column field="status" header="Status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusFilterTemplate} />
                         <Column field="activity" header="Activity" showFilterMatchModes={false} style={{ minWidth: '12rem' }} body={activityBodyTemplate} filter filterElement={activityFilterTemplate} />
                         <Column field="verified" header="Verified" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedFilterTemplate} />
-                    </DataTable>
+                     */}</DataTable>
                 </div>
             </div>
         </div>
