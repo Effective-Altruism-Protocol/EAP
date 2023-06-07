@@ -108,7 +108,8 @@ const Table = (props) => {
     };
 
     const formatDate = (value) => {
-        return value.toLocaleDateString('en-US', {
+        const myDate = new Date(value * 1000);
+        return myDate.toLocaleDateString('en-US', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric'
@@ -189,7 +190,7 @@ const Table = (props) => {
     };
 
     const dateBodyTemplate = (rowData) => {
-        return formatDate(rowData.date);
+        return formatDate(rowData.createdAt);
     };
 
     const dateFilterTemplate = (options) => {
@@ -362,6 +363,7 @@ const Table = (props) => {
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
                         <Column header="Country" filterField="country.name" style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
                         <Column header="Collected" filterField="collected" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
+                        <Column header="Registered" filterField="createdAt" dataType="date" style={{ minWidth: '10rem' }} body={dateBodyTemplate} filter filterElement={dateFilterTemplate} />
                         
                         {/* <Column
                             header="Agent"
@@ -373,7 +375,6 @@ const Table = (props) => {
                             filter
                             filterElement={representativeFilterTemplate}
                         />
-                        <Column header="Date" filterField="date" dataType="date" style={{ minWidth: '10rem' }} body={dateBodyTemplate} filter filterElement={dateFilterTemplate} />
                         <Column field="status" header="Status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusFilterTemplate} />
                         <Column field="activity" header="Activity" showFilterMatchModes={false} style={{ minWidth: '12rem' }} body={activityBodyTemplate} filter filterElement={activityFilterTemplate} />
                         <Column field="verified" header="Verified" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedFilterTemplate} />
