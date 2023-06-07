@@ -10,6 +10,10 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Message } from 'primereact/message';
 import { ProgressBar } from 'primereact/progressbar';
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+
+import DropdownCountries from "../../components/DropdownCountries.js";
+
 
 export default function Home() {
   // walletConnected
@@ -36,10 +40,12 @@ export default function Home() {
 
   const [foundationProjects, setFoundationProjects] = useState([]);
 
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const [currentAccount, setCurrentAccount] = useState("");    
 
 
+ 
   const projectStatus = {
     0: <Message severity="info" text="Published" />,
     1: <Message severity="success" text="Closed" />,
@@ -119,17 +125,18 @@ const checkIfAccountChanged = async () => {
    */
   const addFoundation = async () => {
     try {
+        console.log(tempFoundation);
       // We need a Signer here since this is a 'write' transaction.
-      const signer = await getProviderOrSigner(true);
+//      const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
-      const tx = await eapContract.addFoundation(tempFoundation.name, tempFoundation.description);
-      setLoading(true);
+ //     const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
+ //     const tx = await eapContract.addFoundation(tempFoundation.name, tempFoundation.description);
+ //     setLoading(true);
       // wait for the transaction to get mined
-      await tx.wait();
-      setLoading(false);
-      getFoundationName();
+ //     await tx.wait();
+ //     setLoading(false);
+ //     getFoundationName();
     } catch (err) {
       alert(err);
       console.error(err);
@@ -237,41 +244,82 @@ const checkIfAccountChanged = async () => {
         return <Button label="Loading..." className=""/>;
       } else {
         return (
-          <div>
-            <div>
-              <div className="p-inputgroup">
-                <InputText
-                  placeholder="name"
-                  onChange={(e) => {
-                    let name = {name: e.target.value};
-                    setTempFoundation( tempFoundation => ({...tempFoundation, ...name}))
-                    }
-                  }
-                />
-              </div>
-
-              <div className="p-inputgroup">
-                <InputTextarea
-                  placeholder="Description"
-                  onChange={(e) =>{
-                    let description = {description: e.target.value};
-                    setTempFoundation( tempFoundation => ({...tempFoundation, ...description}))
-                    }
-                  }
-                />
-              </div>
+                      <div className="card p-fluid">
+                    <h5>Foundation Form</h5>
+                    <div className="field">
+                        <label htmlFor="name">Name</label>
+                        <InputText 
+                            id="name" 
+                            type="text" 
+                            onChange={(e) => {
+                                  let name = {name: e.target.value};
+                                  setTempFoundation( tempFoundation => ({...tempFoundation, ...name}))
+                                  }
+                            } 
+                        />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="description">Description</label>
+                        <InputText 
+                          id="description" 
+                          type="text" 
+                          onChange={(e) =>{
+                              let description = {description: e.target.value};
+                              setTempFoundation( tempFoundation => ({...tempFoundation, ...description}))
+                              }
+                          } 
+                        />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="web">WEB</label>
+                        <InputText 
+                          id="web" 
+                          type="text"
+                          onChange={(e) =>{
+                              let web = {web: e.target.value};
+                              setTempFoundation( tempFoundation => ({...tempFoundation, ...web}))
+                              }
+                          }
+                        />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="email">Email</label>
+                        <InputText
+                          id="email" 
+                          type="text"
+                          onChange={(e) =>{
+                              let email = {email: e.target.value};
+                              setTempFoundation( tempFoundation => ({...tempFoundation, ...email}))
+                              }
+                          }
+                        />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="country">Country</label>
+                      <DropdownCountries
+                        id="country"
+                        selectedCountry = {selectedCountry} 
+                        setSelectedCountry = {setSelectedCountry}
+                      />
+                    </div>
+                    
+                  <Button 
+                      label="Register Foundation" 
+                      onClick={()=> {
+                        let country = {country: selectedCountry.code};
+                        setTempFoundation( tempFoundation => ({...tempFoundation, ...country}))
+                        addFoundation()}} />
             </div>
-            <Button label="Register Foundation" onClick={addFoundation} className=""/>
-
-          </div>
         );
       }
     } else {
       return (
-        <Button label="Connect your wallet" onClick={connectWallet} className=""/>
+        <Button label="Connect your wallet" onClick={connectWallet}/>
       );
     }
   };
+
+  
 
   /*
     renderButton: Returns a button based on the state of the dapp

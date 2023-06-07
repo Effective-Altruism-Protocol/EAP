@@ -38,7 +38,7 @@ const AppTopbar = forwardRef((props, ref) => {
                 <span>Effective Altruism Protocol</span>
             </Link>
 
-            <div
+           {/*  <div
             className=
               ""
               >
@@ -85,8 +85,10 @@ const AppTopbar = forwardRef((props, ref) => {
               </li>
             </ul>
             
-          </div>
-
+          </div> */}
+            <Button ref={topbarmenubuttonRef} type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={showProfileSidebar}>
+                <i className="pi pi-bars" />
+            </Button>
 
             <div ref={topbarmenuRef} className={classNames('layout-topbar-menu', { 'layout-topbar-menu-mobile-active': layoutState.profileSidebarVisible })}>
                 <Button

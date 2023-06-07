@@ -40,6 +40,9 @@ export default function Home() {
     return null;
   }
 
+
+  
+
   return (
     <div>
       <div className="grid grid-nogutter surface-0 text-800">
@@ -62,13 +65,7 @@ export default function Home() {
                 className="mr-3 p-button-raised"
               />
             </Link>
-            <Link href="/documentation">
-              <Button
-                label="Get Started"
-                type="button"
-                className="mr-3 p-button-raised"
-              />
-            </Link>
+          
             <Link href="/foundation">
               <Button
                 label="I´m a Foundation"
@@ -76,7 +73,17 @@ export default function Home() {
                 className="mr-3 p-button-raised"
               />
             </Link>
+            <Link href="/documentation">
+              <Button
+                label="Get Started"
+                type="button"
+                className="p-button-outlined"
+              />
+            </Link>
           </section>
+          
+            
+          
         </div>
         <div className="col-12 md:col-6 overflow-hidden">
           <img

@@ -349,7 +349,7 @@ const Table = (props) => {
                         filterDisplay="menu"
                         loading={loading1}
                         responsiveLayout="scroll"
-                        emptyMessage="No customers found."
+                        emptyMessage="No foundations found."
                         header={header1}
                     >
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
