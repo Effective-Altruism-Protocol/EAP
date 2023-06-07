@@ -26,6 +26,9 @@ export default function Home() {
 
   const [foundations, setFoundations] = useState([]);
 
+  const [countriesData, setCountriesData] = useState([]);
+
+
 
   
 
@@ -103,12 +106,17 @@ export default function Home() {
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
       const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
+      const countries = await eapContract.getCountries();
+      setCountriesData(countries);
       const tempFoundations = await eapContract.getAllFoundations();
       setLoading(true);
       // wait for the transaction to get mined
       setLoading(false);
       //setFoundationProjects([...projects]);
-      setFoundations(tempFoundations);
+      
+      console.log(tempFoundations.slice(1))
+
+      setFoundations(tempFoundations.slice(1));
     } catch (err) {
       //alert(err);
       console.error(err);
@@ -124,12 +132,12 @@ export default function Home() {
         return (
           <div className="card flex flex-wrap justify-content-center gap-3">
             {foundations.map((foundation, index) => (
-              index ?
-              <Link key={index} href={`/contribute/${index}`}>
-                <Button label={foundation.name} key={index}/>
+              //index ?
+              <Link key={index} href={`/contribute/${foundation.id}`}>
+                <Button label={foundation.name} key={foundation.id}/>
               </Link>
-              :
-              <></>
+              //:
+              //<></>
               ))
             }
           </div>
@@ -182,6 +190,7 @@ export default function Home() {
           {renderFoundations()}
           <Table
             foundations = {foundations}
+            countriesData = {countriesData}
           />
         
       </div>

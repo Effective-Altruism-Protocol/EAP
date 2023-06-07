@@ -15,6 +15,7 @@ import { Rating } from 'primereact/rating';
 import { CustomerService } from '../demo/service/CustomerService';
 import { ProductService } from '../demo/service/ProductService';
 import { InputText } from 'primereact/inputtext';
+import { countries } from '../constants';
 
 const Table = (props) => {
     const [customers1, setCustomers1] = useState(null);
@@ -28,7 +29,11 @@ const Table = (props) => {
     const [expandedRows, setExpandedRows] = useState(null);
     const [allExpanded, setAllExpanded] = useState(false);
 
-    const {foundations} = props;
+    const {foundations, countriesData} = props;
+    const [countryCode, setCountryCode] = useState({});
+
+    
+
 
     const representatives = [
         { name: 'Amy Elsner', image: 'amyelsner.png' },
@@ -129,12 +134,14 @@ const Table = (props) => {
         setGlobalFilterValue1('');
     };
 
+   
+
     const countryBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                {console.log(rowData)}
-                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${rowData.countryCodeiso2}`} width={30} />
-                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{rowData.countryCodeiso2}</span>
+                {setCountryCode(countries.find((country) => country.code === countriesData[rowData.country]))}
+                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${countryCode.code && countryCode.code.toLowerCase()}`} width={30} />
+                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{countryCode.name}</span>
             </React.Fragment>
         );
     };
@@ -190,7 +197,7 @@ const Table = (props) => {
     };
 
     const balanceBodyTemplate = (rowData) => {
-        return formatCurrency(rowData.balance);
+        return formatCurrency(rowData.collected);
     };
 
     const balanceFilterTemplate = (options) => {
@@ -353,7 +360,9 @@ const Table = (props) => {
                         header={header1}
                     >
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
-                        <Column header="Country" filterField="country.name" style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
+                        <Column header="Country" filterField="country.name" filter style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
+                        <Column header="Collected" filterField="collected" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
+                        
                         {/* <Column
                             header="Agent"
                             filterField="representative"
@@ -365,7 +374,6 @@ const Table = (props) => {
                             filterElement={representativeFilterTemplate}
                         />
                         <Column header="Date" filterField="date" dataType="date" style={{ minWidth: '10rem' }} body={dateBodyTemplate} filter filterElement={dateFilterTemplate} />
-                        <Column header="Balance" filterField="balance" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
                         <Column field="status" header="Status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusFilterTemplate} />
                         <Column field="activity" header="Activity" showFilterMatchModes={false} style={{ minWidth: '12rem' }} body={activityBodyTemplate} filter filterElement={activityFilterTemplate} />
                         <Column field="verified" header="Verified" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedFilterTemplate} />

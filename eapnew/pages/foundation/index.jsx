@@ -10,7 +10,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Message } from 'primereact/message';
 import { ProgressBar } from 'primereact/progressbar';
 import { Button } from 'primereact/button';
-import { Dropdown } from 'primereact/dropdown';
+import { Chips } from "primereact/chips";
 
 import DropdownCountries from "../../components/DropdownCountries.js";
 
@@ -40,12 +40,10 @@ export default function Home() {
 
   const [foundationProjects, setFoundationProjects] = useState([]);
 
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState();
 
   const [currentAccount, setCurrentAccount] = useState("");    
 
-
- 
   const projectStatus = {
     0: <Message severity="info" text="Published" />,
     1: <Message severity="success" text="Closed" />,
@@ -125,18 +123,30 @@ const checkIfAccountChanged = async () => {
    */
   const addFoundation = async () => {
     try {
+
+        console.log(selectedCountry);
         console.log(tempFoundation);
+
       // We need a Signer here since this is a 'write' transaction.
-//      const signer = await getProviderOrSigner(true);
+      const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
- //     const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
- //     const tx = await eapContract.addFoundation(tempFoundation.name, tempFoundation.description);
- //     setLoading(true);
+      const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
+      const countriesCodes = await eapContract.getCountries();
+      console.log(countriesCodes);
+      const countryCode = countriesCodes.findIndex((country) => country === tempFoundation.country);
+      const tx = await eapContract.addFoundation(
+                                            tempFoundation.name, 
+                                            tempFoundation.description,
+                                            tempFoundation.email,
+                                            tempFoundation.web,
+                                            countryCode,
+                                            tempFoundation.tags );
+      setLoading(true);
       // wait for the transaction to get mined
- //     await tx.wait();
- //     setLoading(false);
- //     getFoundationName();
+      await tx.wait();
+      setLoading(false);
+      getFoundationName();
     } catch (err) {
       alert(err);
       console.error(err);
@@ -231,8 +241,6 @@ const checkIfAccountChanged = async () => {
     }
   };
 
-  
-
   /*
     renderButton: Returns a button based on the state of the dapp
   */
@@ -244,7 +252,7 @@ const checkIfAccountChanged = async () => {
         return <Button label="Loading..." className=""/>;
       } else {
         return (
-                      <div className="card p-fluid">
+                  <div className="card p-fluid">
                     <h5>Foundation Form</h5>
                     <div className="field">
                         <label htmlFor="name">Name</label>
@@ -298,18 +306,26 @@ const checkIfAccountChanged = async () => {
                       <label htmlFor="country">Country</label>
                       <DropdownCountries
                         id="country"
-                        selectedCountry = {selectedCountry} 
-                        setSelectedCountry = {setSelectedCountry}
+                        tempFoundation = {tempFoundation} 
+                        setTempFoundation = {setTempFoundation} 
                       />
                     </div>
+                    <div className="field">
+                      <label htmlFor="tags">Tags</label>
+                      <Chips id='tags' value={tempFoundation.tags} 
+                        onChange={(e) => {
+                            let tags = {tags: e.value};
+                            setTempFoundation( tempFoundation => ({...tempFoundation, ...tags}))
+                            } 
+                        }
+                        separator="," />
+                    </div>
                     
-                  <Button 
-                      label="Register Foundation" 
-                      onClick={()=> {
-                        let country = {country: selectedCountry.code};
-                        setTempFoundation( tempFoundation => ({...tempFoundation, ...country}))
-                        addFoundation()}} />
-            </div>
+                    <Button 
+                        label="Register Foundation" 
+                        onClick={()=> {
+                          addFoundation()}} />
+                  </div>
         );
       }
     } else {
