@@ -23,7 +23,7 @@ const LandingPage = () => {
       <div id="home" className="landing-wrapper overflow-hidden">
         <div className="py-4 px-4 mx-0 md:mx-6 lg:mx-8 lg:px-8 flex align-items-center justify-content-between relative lg:static">
           <Link href="/" className="flex align-items-center">
-            <img
+            <image
               src={`/layout/images/${
                 layoutConfig.colorScheme === "light"
                   ? "logo-dark"
@@ -154,7 +154,7 @@ const LandingPage = () => {
               </section>
             </div>
             <div className="col-12 md:col-6 overflow-hidden">
-              <img
+              <image
                 src="/crypto-effective-altruism.png"
                 alt="hero-1"
                 className="md:ml-auto block md:h-full"
@@ -478,7 +478,7 @@ const LandingPage = () => {
                   occaecat cupidatat non proident, sunt in culpa qui officia
                   deserunt mollit anim id est laborum.”
                 </p>
-                <img
+                <image
                   src="/demo/images/landing/peak-logo.svg"
                   className="mt-4"
                   alt="Company logo"
@@ -501,7 +501,7 @@ const LandingPage = () => {
               className="flex justify-content-center col-12 lg:col-6 bg-purple-100 p-0 flex-order-1 lg:flex-order-0"
               style={{ borderRadius: "8px" }}
             >
-              <img
+              <image
                 src="/demo/images/landing/mockup.svg"
                 className="w-11"
                 alt="mockup mobile"
@@ -563,7 +563,7 @@ const LandingPage = () => {
               className="flex justify-content-end flex-order-1 sm:flex-order-2 col-12 lg:col-6 bg-yellow-100 p-0"
               style={{ borderRadius: "8px" }}
             >
-              <img
+              <image
                 src="/demo/images/landing/mockup-desktop.svg"
                 className="w-11"
                 alt="mockup"
@@ -584,7 +584,7 @@ const LandingPage = () => {
             <div className="col-12 lg:col-4 p-0 md:p-3">
               <div className="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all">
                 <h3 className="text-900 text-center my-5">Free</h3>
-                <img
+                <image
                   src="/demo/images/landing/free.svg"
                   className="w-10 h-10 mx-auto"
                   alt="free"
@@ -629,7 +629,7 @@ const LandingPage = () => {
             <div className="col-12 lg:col-4 p-0 md:p-3 mt-4 md:mt-0">
               <div className="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all">
                 <h3 className="text-900 text-center my-5">Startup</h3>
-                <img
+                <image
                   src="/demo/images/landing/startup.svg"
                   className="w-10 h-10 mx-auto"
                   alt="startup"
@@ -674,7 +674,7 @@ const LandingPage = () => {
             <div className="col-12 lg:col-4 p-0 md:p-3 mt-4 md:mt-0">
               <div className="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all">
                 <h3 className="text-900 text-center my-5">Enterprise</h3>
-                <img
+                <image
                   src="/demo/images/landing/enterprise.svg"
                   className="w-10 h-10 mx-auto"
                   alt="enterprise"
@@ -725,7 +725,7 @@ const LandingPage = () => {
                 href="/"
                 className="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer"
               >
-                <img
+                <image
                   src={`/layout/images/${
                     layoutConfig.colorScheme === "light"
                       ? "logo-dark"
@@ -787,7 +787,7 @@ const LandingPage = () => {
                   </a>
                   <a className="line-height-3 text-xl block cursor-pointer mb-2 text-700">
                     Events
-                    <img
+                    <image
                       src="/demo/images/landing/new-badge.svg"
                       className="ml-2"
                       alt="badge"
