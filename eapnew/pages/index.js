@@ -86,7 +86,7 @@ export default function Home() {
           
         </div>
         <div className="col-12 md:col-6 overflow-hidden">
-          <image
+          <img
             src="/crypto-effective-altruism.png"
             alt="hero-1"
             className="md:ml-auto block md:h-full"

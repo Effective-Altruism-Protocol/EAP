@@ -64,7 +64,7 @@ const OverlayDemo = () => {
     };
 
     const basicDialogFooter = <Button type="button" label="OK" onClick={() => setDisplayBasic(false)} icon="pi pi-check" severity="secondary" />;
-    const imageBodyTemplate = (data) => <image src={`/demo/images/product/${data.image}`} alt={data.image} className="product-image" width="60" style={{ boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)' }} />;
+    const imageBodyTemplate = (data) => <img src={`/demo/images/product/${data.image}`} alt={data.image} className="product-image" width="60" style={{ boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)' }} />;
     const priceBodyTemplate = (data) => formatCurrency(data.price);
     const confirmationDialogFooter = (
         <>
@@ -99,7 +99,7 @@ const OverlayDemo = () => {
                             <div>
                                 <Button type="button" label="Image" onClick={toggle} severity="success" />
                                 <OverlayPanel ref={op} appendTo={typeof window !== 'undefined' ? document.body : null} showCloseIcon>
-                                    <image src="/demo/images/nature/nature9.jpg" alt="nature1" />
+                                    <img src="/demo/images/nature/nature9.jpg" alt="nature1" />
                                 </OverlayPanel>
                             </div>
                             <div>

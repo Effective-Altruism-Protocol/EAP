@@ -34,7 +34,7 @@ const AppTopbar = forwardRef((props, ref) => {
     return (
         <div className="layout-topbar">
             <Link href="/" className="layout-topbar-logo">
-                <image src={`/layout/images/logo-${layoutConfig.colorScheme !== 'light' ? 'white' : 'dark'}.svg`} width="60px" height={'60px'} widt={'true'} alt="logo" />
+                <img src={`/layout/images/logo-${layoutConfig.colorScheme !== 'light' ? 'white' : 'dark'}.svg`} width="60px" height={'60px'} widt={'true'} alt="logo" />
                 <span>Effective Altruism Protocol</span>
             </Link>
 

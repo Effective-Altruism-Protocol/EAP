@@ -6,7 +6,7 @@ const AppFooter = () => {
 
     return (
         <div className="layout-footer">
-            {/* <image src={`/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="Logo" height="20" className="mr-2" /> */}
+            {/* <img src={`/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="Logo" height="20" className="mr-2" /> */}
              
             <span className="font-medium ml-2">Made with &#10084; by EAP Team</span>
         </div>
