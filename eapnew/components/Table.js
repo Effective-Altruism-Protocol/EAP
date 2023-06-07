@@ -140,7 +140,7 @@ const Table = (props) => {
         return (
             <React.Fragment>
                 {setCountryCode(countries.find((country) => country.code === countriesData[rowData.country]))}
-                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${countryCode.code && countryCode.code.toLowerCase()}`} width={30} />
+                <image alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${countryCode.code && countryCode.code.toLowerCase()}`} width={30} />
                 <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{countryCode.name}</span>
             </React.Fragment>
         );
@@ -158,7 +158,7 @@ const Table = (props) => {
         const representative = rowData.representative;
         return (
             <React.Fragment>
-                <img
+                <image
                     alt={representative.name}
                     src={`/demo/images/avatar/${representative.image}`}
                     onError={(e) => (e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png')}
@@ -182,7 +182,7 @@ const Table = (props) => {
     const representativesItemTemplate = (option) => {
         return (
             <div className="p-multiselect-representative-option">
-                <img alt={option.name} src={`/demo/images/avatar/${option.image}`} width={32} style={{ verticalAlign: 'middle' }} />
+                <image alt={option.name} src={`/demo/images/avatar/${option.image}`} width={32} style={{ verticalAlign: 'middle' }} />
                 <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{option.name}</span>
             </div>
         );
@@ -271,7 +271,7 @@ const Table = (props) => {
     };
 
     const imageBodyTemplate = (rowData) => {
-        return <img src={`/demo/images/product/${rowData.image}`} onError={(e) => (e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png')} alt={rowData.image} className="shadow-2" width={100} />;
+        return <image src={`/demo/images/product/${rowData.image}`} onError={(e) => (e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png')} alt={rowData.image} className="shadow-2" width={100} />;
     };
 
     const priceBodyTemplate = (rowData) => {
@@ -307,7 +307,7 @@ const Table = (props) => {
     const headerTemplate = (data) => {
         return (
             <React.Fragment>
-                <img alt={data.representative.name} src={`/demo/images/avatar/${data.representative.image}`} width="32" style={{ verticalAlign: 'middle' }} />
+                <image alt={data.representative.name} src={`/demo/images/avatar/${data.representative.image}`} width="32" style={{ verticalAlign: 'middle' }} />
                 <span className="font-bold ml-2">{data.representative.name}</span>
             </React.Fragment>
         );
