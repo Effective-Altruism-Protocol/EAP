@@ -1,4 +1,4 @@
-export const EAP_CONTRACT_ADDRESS = "0x63d0288BF319404da5745B4CdedF568dcE18cF38"; //mumbai
+export const EAP_CONTRACT_ADDRESS = "0x31b0d59345abC8E12AEB976c43d7e0d9c8060336"; //mumbai
 export const CONVERT_TOKENS_CONTRACT_ADDRESS = "";
 
 export const EAP_ABI = [
@@ -70,6 +70,11 @@ export const EAP_ABI = [
           {
             "internalType": "string",
             "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
             "type": "string"
           },
           {
@@ -265,6 +270,11 @@ export const EAP_ABI = [
       {
         "internalType": "string",
         "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
         "type": "string"
       },
       {
@@ -729,6 +739,11 @@ export const EAP_ABI = [
             "type": "string"
           },
           {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
             "internalType": "uint256",
             "name": "goal",
             "type": "uint256"
@@ -792,6 +807,11 @@ export const EAP_ABI = [
           {
             "internalType": "string",
             "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
             "type": "string"
           },
           {
@@ -891,6 +911,11 @@ export const EAP_ABI = [
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
         "internalType": "uint256",
         "name": "goal",
         "type": "uint256"
@@ -976,6 +1001,11 @@ export const EAP_ABI = [
       {
         "internalType": "string",
         "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
         "type": "string"
       },
       {

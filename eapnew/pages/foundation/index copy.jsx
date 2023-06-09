@@ -64,21 +64,10 @@ const checkIfAccountChanged = async () => {
         } catch (error) {
           console.log(error);
         }
-}
-
-const checkIfNetworkChanged = async () => {
-  try {
-    const {ethereum} = window;
-   
-
-  } catch (error) {
-    console.log(error);
-  }
-}
+      }
 
   useEffect(() => {
     checkIfAccountChanged();
-    checkIfNetworkChanged();
   }, []);
 
   /**
@@ -134,6 +123,10 @@ const checkIfNetworkChanged = async () => {
    */
   const addFoundation = async () => {
     try {
+
+        console.log(selectedCountry);
+        console.log(tempFoundation);
+
       // We need a Signer here since this is a 'write' transaction.
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
@@ -171,7 +164,7 @@ const checkIfNetworkChanged = async () => {
       // update methods
       const eapContract = new Contract(EAP_CONTRACT_ADDRESS, EAP_ABI, signer);
       //setFoundationProjects({name: projectName, goal: projectGoal});
-      const tx = await eapContract.addProject(tempProject.name, tempProject.description, tempProject.goal);
+      const tx = await eapContract.addProject(tempProject.name, tempProject.goal);
       setLoading(true);
       // wait for the transaction to get mined
       await tx.wait();
@@ -397,11 +390,11 @@ const checkIfNetworkChanged = async () => {
       } else if (loading) {
         return <Button label="Loading..." className=""/>;
       }
-    } /* else {
+    } else {
       return (
-        <Button label="Connect your wallety" onClick={connectWallet} className=""/>
+        <Button label="Connect your wallet" onClick={connectWallet} className=""/>
       );
-    } */
+    }
   };
 
   const calculateValueBar = (goal, remaining) => {
@@ -468,14 +461,11 @@ const checkIfNetworkChanged = async () => {
         providerOptions: {},
         disableInjectedProvider: false,
       });
-      //connectWallet();
-      console.log("asdfasdf")
+      connectWallet();
+    }
+    getFoundationName();
 
-    }else if(walletConnected){
-      getFoundationName();
-  }
-  }, [walletConnected, currentAccount]);
-
+  }, [walletConnected]);
 
   return (
     <div>
@@ -494,8 +484,8 @@ const checkIfNetworkChanged = async () => {
         )}
       </div>
       <main className="flex flex-column align-items-center">
-        <div className=" w-6">
-          <h1 className="">{walletConnected ? (!foundationName && "Address Don't have a Foundation, please register.") : "Please connect your wallet first"}</h1>
+        <div className=" w-5">
+          <h1 className="">{!foundationName ? "Please Register a Foundation" : "Welcome"}</h1>
           {renderRegisterFoundation()}
           {foundationName && renderRegisterProject()}
           <div className="">

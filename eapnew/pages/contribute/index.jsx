@@ -29,9 +29,6 @@ export default function Home() {
   const [countriesData, setCountriesData] = useState([]);
 
 
-
-  
-
 /* const checkIfAccountChanged = async () => {
         try {
           const {ethereum} = window;
@@ -187,7 +184,7 @@ export default function Home() {
 
           <h1 className="">Select a Foundation to Contribute</h1>
           
-          {renderFoundations()}
+          {/* {renderFoundations()} */}
           <Table
             foundations = {foundations}
             countriesData = {countriesData}

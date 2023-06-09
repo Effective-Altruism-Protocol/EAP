@@ -63,7 +63,7 @@ contract EAP is Ownable, ConvertTokens {
         address owner;
         string name;
         //uint256 foundationId;
-        //string description;
+        string description;
         uint256 goal;
         uint256 balance; 
         uint256 remainingAmount;
@@ -207,7 +207,7 @@ contract EAP is Ownable, ConvertTokens {
         /// @param _name The Project Name.
         /// @param _goal The goal in ETH to reach. Will be in USD.
         function addProject(
-            string memory _name, uint256 _goal
+            string memory _name, string memory _description, uint256 _goal
             ) public
             requireName(_name)  
             foundationExist(msg.sender) returns (int256){
@@ -216,6 +216,7 @@ contract EAP is Ownable, ConvertTokens {
                 projectId,
                 msg.sender,
                 _name,
+                _description,
                 _goal,
                 0,
                 _goal,

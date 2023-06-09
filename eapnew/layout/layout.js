@@ -122,7 +122,7 @@ const Layout = (props) => {
             <div className={containerClass}>
                 <AppTopbar ref={topbarRef} />
                 <div ref={sidebarRef} className="layout-sidebar">
-                    <AppSidebar />
+                    {/* <AppSidebar /> */}
                 </div>
                 <div className="layout-main-container">
                     <div className="layout-main">{props.children}</div>

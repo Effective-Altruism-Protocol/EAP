@@ -6,6 +6,7 @@ import { Column } from 'primereact/column';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
+import Link from 'next/link';
 import { ProgressBar } from 'primereact/progressbar';
 import { Calendar } from 'primereact/calendar';
 import { MultiSelect } from 'primereact/multiselect';
@@ -136,13 +137,17 @@ const Table = (props) => {
     };
 
    
+    const getCountry = (countryCode) => {
+        let country =  countries.find((country) => country.code === countriesData[countryCode])
+        return country
+    }
 
     const countryBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                {setCountryCode(countries.find((country) => country.code === countriesData[rowData.country]))}
-                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${countryCode.code && countryCode.code.toLowerCase()}`} width={30} />
-                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{countryCode.name}</span>
+                
+                <img alt="flag" src={`/demo/images/flag/flag_placeholder.png`} className={`flag flag-${getCountry(rowData.country).code && getCountry(rowData.country).code.toLowerCase()}`} width={30} />
+                <span style={{ marginLeft: '.5em', verticalAlign: 'middle' }}>{getCountry(rowData.country).name}</span>
             </React.Fragment>
         );
     };
@@ -205,8 +210,11 @@ const Table = (props) => {
         return <InputNumber value={options.value} onChange={(e) => options.filterCallback(e.value, options.index)} mode="currency" currency="USD" locale="en-US" />;
     };
 
-    const statusBodyTemplate = (rowData) => {
-        return <span className={`customer-badge status-${rowData.status}`}>{rowData.status}</span>;
+    const contributeBodyTemplate = (rowData) => {
+        
+        return (<div className="flex align-items-center justify-content-between px-3">
+    <Link href={`/contribute/${rowData.id}`}><Button label="View Projects" className={`customer-badge status-${rowData.status}`}></Button></Link> 
+        </div>)
     };
 
     const statusFilterTemplate = (options) => {
@@ -362,8 +370,10 @@ const Table = (props) => {
                     >
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
                         <Column header="Country" filterField="country.name" style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
+                        <Column field="description" header="Description" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
                         <Column header="Collected" filterField="collected" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
                         <Column header="Registered" filterField="createdAt" dataType="date" style={{ minWidth: '10rem' }} body={dateBodyTemplate} filter filterElement={dateFilterTemplate} />
+                        <Column field="web" header="" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={contributeBodyTemplate} filter filterElement={statusFilterTemplate} />
                         
                         {/* <Column
                             header="Agent"

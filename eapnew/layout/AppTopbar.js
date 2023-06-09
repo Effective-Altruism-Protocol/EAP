@@ -91,11 +91,13 @@ const AppTopbar = forwardRef((props, ref) => {
             </Button>
 
             <div ref={topbarmenuRef} className={classNames('layout-topbar-menu', { 'layout-topbar-menu-mobile-active': layoutState.profileSidebarVisible })}>
+                <Link href='/documentation'>
                 <Button
-                    label="Connect Wallet"
+                    label="Get Started"
                     rounded
                     className="border-none ml-5 font-light line-height-2 bg-blue-500 text-white"
                 />
+                </Link>
                 <ThemeSwitch/>
             </div>
         </div>

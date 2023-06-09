@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import { Button } from "primereact/button";
+import { Image } from 'primereact/image';
 
 export default function Home() {
   // ETH Balance of the DAO contract
@@ -40,27 +41,23 @@ export default function Home() {
     return null;
   }
 
-
-  
-
   return (
     <div>
       <div className="grid grid-nogutter surface-0 text-800">
         <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
           <section>
             <span className="block text-6xl font-bold mb-1">
-            DECENTRALIZING THE PHILANTROPY
+            DECENTRALIZING PHILANTROPY
             </span>
             <div className="text-6xl text-primary font-bold mb-3">
               Making It Posible!
             </div>
             <p className="mt-0 mb-4 text-700 line-height-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            A set of WEB3 tools that aims to change the way donors and organizations interact. It increases transparency for organizations and gives donors more decision-making power, as well as rewards them for their actions.
             </p>
             <Link href="/contribute">
               <Button
-                label="I Want to Contribute"
+                label="I want to contribute"
                 type="button"
                 className="mr-3 p-button-raised"
               />
@@ -70,26 +67,23 @@ export default function Home() {
               <Button
                 label="I´m a Foundation"
                 type="button"
-                className="mr-3 p-button-raised"
+                className="mr-3 p-button-outlined"
               />
             </Link>
-            <Link href="/documentation">
+            {/* <Link href="/documentation">
               <Button
                 label="Get Started"
                 type="button"
                 className="p-button-outlined"
               />
-            </Link>
+            </Link> */}
           </section>
-          
-            
-          
         </div>
-        <div className="col-12 md:col-6 overflow-hidden">
-          <img
+        <div className="col-12 md:col-6 lg:col-6 overflow-hidden flex">
+          <Image
             src="/crypto-effective-altruism.png"
             alt="hero-1"
-            className="md:ml-auto block md:h-full"
+            className="md:ml-auto lg:h-full md:max-w-max block lg:block"
             style={{ clipPath: "polygon(8% 0, 100% 0%, 100% 100%, 0 100%)" }}
           />
         </div>
