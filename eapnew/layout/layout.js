@@ -114,7 +114,7 @@ const Layout = (props) => {
                 <meta property="og:title" content="Effective Altruism Protocol | The new way to donate."></meta>
                 <meta property="og:url" content="https://eaprotocol.org/"></meta>
                 <meta property="og:description" content="A set of WEB3 tools that change the way donors and organizations interact. It increases transparency for organizations and gives donors more decision-making power, as well as rewards them for their actions." />
-                <meta property="og:image" content="https://eaprotocol.org/layout/images/logo-dark.svg"></meta>
+                <meta property="og:image" content="https://eaprotocol.org/layout/images/eap.png"></meta>
                 <meta property="og:ttl" content="604800"></meta>
                 <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
             </Head>
