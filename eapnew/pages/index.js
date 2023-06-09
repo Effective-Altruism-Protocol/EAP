@@ -53,7 +53,7 @@ export default function Home() {
               Making It Posible!
             </div>
             <p className="mt-0 mb-4 text-700 line-height-3">
-            A set of WEB3 tools that aims to change the way donors and organizations interact. It increases transparency for organizations and gives donors more decision-making power, as well as rewards them for their actions.
+            A set of WEB3 tools that change the way donors and organizations interact. It increases transparency for organizations and gives donors more decision-making power, as well as rewards them for their actions.
             </p>
             <Link href="/contribute">
               <Button

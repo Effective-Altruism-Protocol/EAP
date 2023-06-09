@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { InputText } from "primereact/inputtext";
 import { ProgressBar } from 'primereact/progressbar';
 import { Message } from 'primereact/message';
+import { Calendar } from 'primereact/calendar';
 
 import HomeButton from "./HomeButton";
 
@@ -192,6 +193,19 @@ const checkIfAccountChanged = async () => {
         return value;
     }
 
+
+  
+  const formatDate = (value) => {
+    const myDate = new Date(value * 1000);
+    return myDate.toLocaleDateString('en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+  };
+
+    
+
     const renderDonationGroup = (index, donation) => {
     return(
         <div>
@@ -217,17 +231,22 @@ const checkIfAccountChanged = async () => {
           {foundationProjects.map((project, index) => (
             
             <AccordionTab header={project["name"]} key={index}>
-            {projectStatus[project.status]}
-              <p className=""><span>Goal: </span>{utils.formatEther(project.goal)}</p>
+              <div className="flex flex-row flex-wrap">
+                <p className="flex align-items-center m-2">{project.description}</p>
+                <p className="flex align-items-center justify-content-center bg-primary font-bold border-round m-2">{formatDate(project.createdAt)}</p>
+              </div>
+
+              <div className='m-2'>{projectStatus[project.status]}</div>
+              
+              <p className="m-3"><span>Goal: </span>{utils.formatEther(project.goal)}</p>
               <div className="card">
               <ProgressBar className="h-1rem" value={calculateValueBar(utils.formatEther(project.goal), utils.formatEther(project.remainingAmount))}></ProgressBar>
               </div>
-              <p className=""><span>Balance: </span>{utils.formatEther(project.balance)}</p>
-              <p className=""><span>Remaining: </span>{utils.formatEther(project.remainingAmount)}</p>
-            {address == foundation.account ? "You can't contribute to your own foundation, change wallet." :
+              <p className="m-2"><span>Balance: </span>{utils.formatEther(project.balance)}</p>
+              <p className="m-2"><span>Remaining: </span>{utils.formatEther(project.remainingAmount)}</p>
+              {address == foundation.account ? "You can't contribute to your own foundation, change wallet." :
                  project.status == 0 && 
                  renderDonationGroup(index, donation)}
-              
             </AccordionTab>
           ))}
         </Accordion>

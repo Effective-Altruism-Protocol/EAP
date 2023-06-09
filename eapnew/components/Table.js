@@ -17,6 +17,7 @@ import { CustomerService } from '../demo/service/CustomerService';
 import { ProductService } from '../demo/service/ProductService';
 import { InputText } from 'primereact/inputtext';
 import { countries } from '../constants';
+import { utils } from 'ethers';
 
 const Table = (props) => {
     const [customers1, setCustomers1] = useState(null);
@@ -118,7 +119,7 @@ const Table = (props) => {
     };
 
     const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        return utils.formatEther(value)//value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     };
 
     const initFilters1 = () => {
@@ -371,7 +372,7 @@ const Table = (props) => {
                         <Column field="name" header="Name" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
                         <Column header="Country" filterField="country.name" style={{ minWidth: '12rem' }} body={countryBodyTemplate} filter filterPlaceholder="Search by country" filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
                         <Column field="description" header="Description" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
-                        <Column header="Collected" filterField="collected" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
+                        <Column header="Weis Collected  " filterField="collected" dataType="numeric" style={{ minWidth: '10rem' }} body={balanceBodyTemplate} filter filterElement={balanceFilterTemplate} />
                         <Column header="Registered" filterField="createdAt" dataType="date" style={{ minWidth: '10rem' }} body={dateBodyTemplate} filter filterElement={dateFilterTemplate} />
                         <Column field="web" header="" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={contributeBodyTemplate} filter filterElement={statusFilterTemplate} />
                         
