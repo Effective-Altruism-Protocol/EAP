@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="eapnew/piblic/layaout/images/eap.png" alt="Logo" width="80" height="80">
+    <img src="eapnew/public/layout/images/eap.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Effective Altruism Protocol</h3>
