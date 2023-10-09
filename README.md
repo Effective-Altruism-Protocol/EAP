@@ -34,7 +34,7 @@
     <img src="eapnew/public/layout/images/eap.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Effective Altruism Protocol</h3>
+<h3 align="center">Enhanced Altruism Protocol</h3>
 
   <p align="center">
     A set of WEB3 tools that change the way donors and organizations interact. It increases transparency for organizations and gives donors more decision-making power, as well as rewards them for their actions.

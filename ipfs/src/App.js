@@ -96,11 +96,20 @@ const getProviderOrSigner = async (needSigner = false) => {
       }
     };
 
+    const url = () => {
+      
+      
+
+      console.log(window.location.pathname);
+    };
+    
+
 
 
     useEffect(() => {
       //if(foundationName){
       getAllFoundations();
+      url();
       //}
       // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
       if (!walletConnected) {
