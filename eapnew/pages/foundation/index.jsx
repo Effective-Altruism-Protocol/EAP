@@ -495,7 +495,7 @@ const checkIfNetworkChanged = async () => {
       </div>
       <main className="flex flex-column align-items-center">
         <div className=" w-6">
-          <h1 className="">{walletConnected ? (!foundationName && "Address Don't have a Foundation, please register.") : "Please connect your wallet first"}</h1>
+          <h1 className="">{walletConnected ? (!foundationName && "Address Doesn't have a Foundation, please register one.") : "Please connect your wallet first"}</h1>
           {renderRegisterFoundation()}
           {foundationName && renderRegisterProject()}
           <div className="">
