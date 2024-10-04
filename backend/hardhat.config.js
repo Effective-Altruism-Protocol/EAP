@@ -29,14 +29,14 @@ module.exports = {
 */
 module.exports = {
   solidity: "0.8.9",
-  defaultNetwork: "mumbai",
+  defaultNetwork: "amoy",
   networks: {
     goerli: {
       url: process.env.QUICKNODE_GOERLI_HTTP_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
-    mumbai: {
-      url: process.env.QUICKNODE_MUMBAI_HTTP_URL,
+    amoy: {
+      url: process.env.QUICKNODE_AMOY_HTTP_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
   },
