@@ -264,7 +264,7 @@ const checkIfAccountChanged = async () => {
       // Assign the Web3Modal class to the reference object by setting it's `current` value
       // The `current` value is persisted throughout as long as this page is open
       web3ModalRef.current = new Web3Modal({
-        network: "Mumbai",
+        network: "Amoy",
         providerOptions: {},
         disableInjectedProvider: false,
       });
