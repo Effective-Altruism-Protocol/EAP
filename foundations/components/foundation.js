@@ -91,11 +91,11 @@ const checkIfAccountChanged = async () => {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
-    // If user is not connected to the Mumbai network, let them know and throw an error
+    // If user is not connected to the Amoy network, let them know and throw an error
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 80001) {
-      window.alert("Change the network to Mumbai");
-      throw new Error("Change network to Mumbai");
+    if (chainId !== 80002) {
+      window.alert("Change the network to Amoy");
+      throw new Error("Change network to Amoy");
     }
 
     if (needSigner) {
